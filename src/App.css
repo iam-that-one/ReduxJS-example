@@ -1,6 +1,6 @@
 .App {
   text-align:left;
-
+  list-style: url('../src/logo.svg');
 }
 
 .App-logo {

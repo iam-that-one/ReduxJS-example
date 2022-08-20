@@ -2,6 +2,7 @@ import {  useState } from 'react';
 
 import { useSelector,useDispatch } from 'react-redux';
 import './App.css';
+import Header from './components/Header';
 
 import { actions } from './store';
 function App() {
@@ -14,14 +15,18 @@ function App() {
   const deleteItem = ()=>{
     dispatch(actions.deleteItem(name))
   }
+  const deleteAll = ()=>{
+    dispatch(actions.deleteAll())
+  }
   const handelName = (value) =>{
     setName(value.target.value)
   }
   return (
     <div className="App">
+      <Header title={"Redux"}/>
       {
         list.map((item,index)=> (
-        <li style={{ listStyleType: "square",margin:10}} key={index}>
+        <li className='list' key={index}>
           {item}
         </li>
         ))
@@ -30,11 +35,12 @@ function App() {
           <textarea
             onChange={handelName}
             value={name}
-            style={{margin:10}}
+            style={{margin:10,width:190}}
           />
         </div>
-        <button style={{height:30,marginLeft:10}} onClick={addToList}>Add To List</button>
-        <button style={{height:30}} onClick={deleteItem}>Delete</button>
+        <button className='add-button'  onClick={addToList}>Add To List</button>
+        <button className='deleteItem-button' onClick={deleteItem}>Delete</button>
+        <button className='deleteAll-button'  onClick={deleteAll}>Delete All</button>
     </div>
   );
 }

@@ -5,10 +5,13 @@ const listSlice = createSlice({
     initialState: {list : ["Abdullah","Ali"]},
     reducers:{
         addToList(state,action){
-            state.list.push(action.payload)
+            state.list.push(action.payload);
         },
         deleteItem(state,action){
-         state.list = state.list.filter((item)=> item !== action.payload)
+         state.list = state.list.filter((item)=> item !== action.payload);
+        },
+        deleteAll(state){
+         state.list = [];
         }
     }
 })
